@@ -3,7 +3,7 @@ import NavBar from "./NavBar"
 import Footer from "./Footer"
 import { useDispatch, useSelector } from "react-redux"
 import axios from "axios"
-import { addUserInfo } from "../assets/userSlice"
+import { addUserInfo } from "../assets/UserSlice"
 import { useEffect } from "react"
 
 import { Toaster } from "react-hot-toast"

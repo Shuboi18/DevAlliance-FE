@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-import { removeUserInfo } from "../assets/userSlice";
+import { removeUserInfo } from "../assets/UserSlice";
 import axios from "axios";
 import { LogOut, User, Users, Bell, Code2, Moon, Sun, Menu, X, MessageCircle } from "lucide-react";
 import { useState } from "react";
