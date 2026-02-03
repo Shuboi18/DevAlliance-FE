@@ -15,6 +15,7 @@ const Signup = () => {
     const [bio, setBio] = useState("");
     const [photo, setPhoto] = useState(null);
     const [skills, setSkills] = useState("");
+    const [developerType, setDeveloperType] = useState("");
 
     // UI states
     const [showPassword, setShowPassword] = useState(false);
@@ -34,6 +35,7 @@ const Signup = () => {
         formData.append("password", password);
         formData.append("age", age);
         formData.append("gender", gender);
+        formData.append("developerType", developerType);
         formData.append("bio", bio);
         formData.append("skills", skills);
         if (photo) {
@@ -132,6 +134,20 @@ const Signup = () => {
                                         <option value="Others">Others</option>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div className="form-control w-full">
+                                <label className="label"><span className="label-text font-medium">Developer Type</span></label>
+                                <select className="select select-bordered select-primary bg-base-200/50 w-full" onChange={(e) => setDeveloperType(e.target.value)}>
+                                    <option disabled selected>Select Developer Type</option>
+                                    <option value="Frontend Developer">Frontend Developer</option>
+                                    <option value="Backend Developer">Backend Developer</option>
+                                    <option value="Full Stack Developer">Full Stack Developer</option>
+                                    <option value="Mobile Developer">Mobile Developer</option>
+                                    <option value="DevOps Engineer">DevOps Engineer</option>
+                                    <option value="Data Scientist">Data Scientist</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                         </div>
 

@@ -23,7 +23,7 @@ const UserFeedCard = ({ feedStore }) => {
     }
 
     const feed = feedStore[0];
-    const { _id, fname, lname, age, bio, skills, photoURL, gender } = feed;
+    const { _id, fname, lname, age, bio, skills, photoURL, gender, developerType } = feed;
 
     return (
         <div className="flex justify-center items-centerw-full">
@@ -40,7 +40,7 @@ const UserFeedCard = ({ feedStore }) => {
 
                 <div className="card-body">
                     <div className="flex items-center gap-2 mb-2">
-                        <span className="badge badge-primary badge-outline">{gender || "Developer"}</span>
+                        <span className="badge badge-primary badge-outline">{developerType || "Developer"}</span>
                     </div>
 
                     <p className="text-base-content/80 line-clamp-3">{bio}</p>
