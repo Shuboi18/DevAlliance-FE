@@ -11,6 +11,7 @@ const EditUserProfile = ({ user }) => {
     const [photo, setPhoto] = useState(null);
     const [previewPhoto, setPreviewPhoto] = useState(user.photoURL);
     const [gender, seteditGender] = useState(user.gender);
+    const [developerType, setDeveloperType] = useState(user.developerType || "Developer");
     const [saving, setSaving] = useState(false);
 
     const handlePhotoChange = (e) => {
@@ -27,6 +28,7 @@ const EditUserProfile = ({ user }) => {
         formData.append("fname", fname);
         formData.append("lname", lname);
         formData.append("gender", gender);
+        formData.append("developerType", developerType);
         formData.append("bio", bio);
         formData.append("skills", skills);
         if (photo) {
@@ -91,6 +93,19 @@ const EditUserProfile = ({ user }) => {
                         </div>
 
                         <div className="form-control mt-4">
+                            <label className="label"><span className="label-text font-semibold">Developer Type</span></label>
+                            <select value={developerType} className="select select-bordered select-primary bg-base-200/50 focus:bg-base-100 transition-all font-medium" onChange={(e) => setDeveloperType(e.target.value)}>
+                                <option value="Frontend Developer">Frontend Developer</option>
+                                <option value="Backend Developer">Backend Developer</option>
+                                <option value="Full Stack Developer">Full Stack Developer</option>
+                                <option value="Mobile Developer">Mobile Developer</option>
+                                <option value="DevOps Engineer">DevOps Engineer</option>
+                                <option value="Data Scientist">Data Scientist</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div className="form-control mt-4">
                             <label className="label"><span className="label-text font-semibold">Bio</span></label>
                             <textarea value={bio} className="textarea textarea-bordered textarea-primary h-32 bg-base-200/50 focus:bg-base-100 transition-all font-medium resize-none leading-relaxed" placeholder="Tell us about yourself..." onChange={(e) => seteditBio(e.target.value)}></textarea>
                             <label className="label"><span className="label-text-alt text-base-content/50">{bio?.length || 0}/200 characters</span></label>
@@ -130,7 +145,7 @@ const EditUserProfile = ({ user }) => {
                                 <h2 className="text-3xl font-black drop-shadow-md text-base-content">
                                     {fname} {lname}
                                 </h2>
-                                <p className="font-medium text-primary uppercase tracking-wide drop-shadow-sm">{gender || "Developer"}</p>
+                                <p className="font-medium text-primary uppercase tracking-wide drop-shadow-sm">{developerType || "Developer"}</p>
                             </div>
                         </figure>
 
