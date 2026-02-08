@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { Send, MessageCircle, Phone, Video } from "lucide-react";
+import { Send, MessageCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import { useSocket } from "../Context/SocketContext";
 
@@ -11,7 +11,7 @@ import { BASE_URL } from "../utils/config";
 const Chat = () => {
     const user = useSelector((store) => store.user);
     const location = useLocation();
-    const { socket, callUser, startVideo } = useSocket();
+    const { socket } = useSocket();
 
     const [connections, setConnections] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
@@ -106,11 +106,7 @@ const Chat = () => {
         setNewMessage("");
     };
 
-    const handleVideoCall = async () => {
-        if (!selectedUser) return;
-        const stream = await startVideo();
-        callUser(selectedUser._id, stream);
-    };
+
 
     if (!user) return <div className="flex justify-center p-10">Loading...</div>;
 
@@ -187,14 +183,7 @@ const Chat = () => {
                                     </span>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <button className="btn btn-ghost btn-circle" onClick={handleVideoCall}>
-                                    <Phone size={20} />
-                                </button>
-                                <button className="btn btn-ghost btn-circle" onClick={handleVideoCall}>
-                                    <Video size={20} />
-                                </button>
-                            </div>
+
                         </div>
 
                         {/* Messages */}
