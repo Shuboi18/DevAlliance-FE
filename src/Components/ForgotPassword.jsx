@@ -80,9 +80,9 @@ const ForgotPassword = () => {
 
                     {step === 1 && (
                         <div className="animate-in slide-in-from-right-4 duration-300">
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Email Address</span></label>
-                                <label className="input input-bordered flex items-center gap-2 focus-within:input-primary transition-all">
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Email Address</span></label>
+                                <label className="input input-bordered flex items-center gap-2 focus-within:input-primary transition-all bg-base-200/50">
                                     <Mail className="w-4 h-4 opacity-70" />
                                     <input value={email} type="email" className="grow" placeholder="user@example.com" onChange={(e) => setEmail(e.target.value)} autoFocus />
                                 </label>
@@ -90,32 +90,40 @@ const ForgotPassword = () => {
 
                             <button
                                 onClick={handleSendOTP}
-                                className={`btn btn-primary w-full mt-6 text-white shadow-lg shadow-primary/40 hover:scale-[1.02] transition-transform ${loading ? 'loading' : ''}`}
+                                className={`btn btn-primary w-full mt-8 text-white shadow-lg shadow-primary/40 hover:scale-[1.02] transition-transform ${loading ? 'loading' : ''}`}
                                 disabled={loading}
                             >
                                 {loading ? "Sending OTP..." : <>Send OTP <ArrowRight size={18} /></>}
                             </button>
+
+                            <div className="text-center mt-6">
+                                <span className="text-sm text-base-content/60">Remember your password? </span>
+                                <span onClick={() => navigate("/login")} className="link link-primary font-bold text-sm cursor-pointer hover:underline">
+                                    Back to Login
+                                </span>
+                            </div>
                         </div>
                     )}
 
                     {step === 2 && (
-                        <div className="space-y-4 animate-in slide-in-from-right-4 duration-300">
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">OTP Code</span></label>
+                        <div className="space-y-5 animate-in slide-in-from-right-4 duration-300">
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">OTP Code</span></label>
                                 <input
                                     value={otp}
                                     type="text"
-                                    className="input input-bordered input-primary tracking-widest text-center text-lg font-bold"
-                                    placeholder="• • • • • •"
+                                    className="input input-bordered input-primary tracking-[0.5em] text-center text-xl font-bold bg-base-200/50 h-14"
+                                    placeholder="••••••"
                                     maxLength={6}
                                     onChange={(e) => setOtp(e.target.value)}
                                     autoFocus
                                 />
+                                <label className="label p-0"><span className="label-text-alt opacity-60">Enter the 6-digit code sent to your email</span></label>
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">New Password</span></label>
-                                <label className="input input-bordered flex items-center gap-2 focus-within:input-primary transition-all relative">
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">New Password</span></label>
+                                <label className="input input-bordered flex items-center gap-2 focus-within:input-primary transition-all relative bg-base-200/50">
                                     <input
                                         value={newPassword}
                                         type={showPassword ? "text" : "password"}
@@ -125,28 +133,30 @@ const ForgotPassword = () => {
                                     />
                                     <button
                                         type="button"
-                                        className="absolute right-3 text-base-content/50 hover:text-primary transition-colors"
+                                        className="btn btn-ghost btn-xs btn-circle text-base-content/50 hover:text-primary transition-colors"
                                         onClick={() => setShowPassword(!showPassword)}
                                     >
-                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                        {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                                     </button>
                                 </label>
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Confirm New Password</span></label>
-                                <input
-                                    value={confirmPassword}
-                                    type={showPassword ? "text" : "password"}
-                                    className="input input-bordered focus-within:input-primary transition-all"
-                                    placeholder="Confirm Password"
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                />
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Confirm New Password</span></label>
+                                <label className="input input-bordered flex items-center gap-2 focus-within:input-primary transition-all bg-base-200/50">
+                                    <input
+                                        value={confirmPassword}
+                                        type={showPassword ? "text" : "password"}
+                                        className="grow"
+                                        placeholder="Confirm Password"
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                    />
+                                </label>
                             </div>
 
                             <button
                                 onClick={handleResetPassword}
-                                className={`btn btn-primary w-full mt-2 text-white shadow-lg shadow-primary/40 hover:scale-[1.02] transition-transform ${loading ? 'loading' : ''}`}
+                                className={`btn btn-primary w-full mt-4 text-white shadow-lg shadow-primary/40 hover:scale-[1.02] transition-transform ${loading ? 'loading' : ''}`}
                                 disabled={loading}
                             >
                                 {loading ? "Resetting..." : <>Reset Password <CheckCircle size={18} /></>}
@@ -154,7 +164,7 @@ const ForgotPassword = () => {
 
                             <button
                                 onClick={() => setStep(1)}
-                                className="btn btn-ghost btn-xs w-full mt-2 text-base-content/60"
+                                className="btn btn-ghost btn-sm w-full text-base-content/60 hover:bg-base-200"
                                 disabled={loading}
                             >
                                 Change Email
