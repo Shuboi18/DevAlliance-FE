@@ -2,4 +2,4 @@
 export const BASE_URL =
   import.meta.env.MODE === "development"
     ? "http://localhost:3000"
-    : "http://3.106.248.229:3000";
+    : "";
