@@ -17,6 +17,7 @@ export const SocketContextProvider = ({ children }) => {
     useEffect(() => {
         if (user) {
             const newSocket = io(BASE_URL, {
+                query: { userId: user._id }, // Pass userId in query for connection
                 withCredentials: true,
             });
 
