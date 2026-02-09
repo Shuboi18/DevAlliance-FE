@@ -82,32 +82,32 @@ const Signup = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Personal Info Column */}
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                             <h3 className="font-semibold text-lg border-b border-base-content/10 pb-2">Personal Info</h3>
 
                             <div className="flex gap-4">
-                                <div className="form-control w-full">
-                                    <label className="label"><span className="label-text font-medium">First Name</span></label>
-                                    <input value={fname} type="text" className="input input-bordered input-primary bg-base-200/50" onChange={(e) => setFname(e.target.value)} />
+                                <div className="form-control w-full gap-2">
+                                    <label className="label p-0"><span className="label-text font-medium">First Name</span></label>
+                                    <input value={fname} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setFname(e.target.value)} />
                                 </div>
-                                <div className="form-control w-full">
-                                    <label className="label"><span className="label-text font-medium">Last Name</span></label>
-                                    <input value={lname} type="text" className="input input-bordered input-primary bg-base-200/50" onChange={(e) => setLname(e.target.value)} />
+                                <div className="form-control w-full gap-2">
+                                    <label className="label p-0"><span className="label-text font-medium">Last Name</span></label>
+                                    <input value={lname} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setLname(e.target.value)} />
                                 </div>
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Email</span></label>
-                                <input value={email} type="email" className="input input-bordered input-primary bg-base-200/50" onChange={(e) => setEmail(e.target.value)} />
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Email</span></label>
+                                <input value={email} type="email" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setEmail(e.target.value)} />
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Password</span></label>
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Password</span></label>
                                 <div className="relative">
                                     <input
                                         value={password}
                                         type={showPassword ? "text" : "password"}
-                                        className="input input-bordered input-primary w-full bg-base-200/50 pr-10"
+                                        className="input input-bordered input-primary w-full bg-base-200/50 pr-10 focus:bg-base-200 transition-colors"
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                     <button
@@ -121,13 +121,13 @@ const Signup = () => {
                             </div>
 
                             <div className="flex gap-4">
-                                <div className="form-control w-1/3">
-                                    <label className="label"><span className="label-text font-medium">Age</span></label>
-                                    <input value={age} type="number" className="input input-bordered input-primary bg-base-200/50" onChange={(e) => setAge(e.target.value)} />
+                                <div className="form-control w-1/3 gap-2">
+                                    <label className="label p-0"><span className="label-text font-medium">Age</span></label>
+                                    <input value={age} type="number" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setAge(e.target.value)} />
                                 </div>
-                                <div className="form-control w-2/3">
-                                    <label className="label"><span className="label-text font-medium">Gender</span></label>
-                                    <select className="select select-bordered select-primary bg-base-200/50 w-full" onChange={(e) => setGender(e.target.value)}>
+                                <div className="form-control w-2/3 gap-2">
+                                    <label className="label p-0"><span className="label-text font-medium">Gender</span></label>
+                                    <select className="select select-bordered select-primary bg-base-200/50 w-full focus:bg-base-200 transition-colors" onChange={(e) => setGender(e.target.value)}>
                                         <option disabled selected>Select Gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -136,9 +136,9 @@ const Signup = () => {
                                 </div>
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Developer Type</span></label>
-                                <select className="select select-bordered select-primary bg-base-200/50 w-full" onChange={(e) => setDeveloperType(e.target.value)}>
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Developer Type</span></label>
+                                <select className="select select-bordered select-primary bg-base-200/50 w-full focus:bg-base-200 transition-colors" onChange={(e) => setDeveloperType(e.target.value)}>
                                     <option disabled selected>Select Developer Type</option>
                                     <option value="Frontend Developer">Frontend Developer</option>
                                     <option value="Backend Developer">Backend Developer</option>
@@ -152,23 +152,23 @@ const Signup = () => {
                         </div>
 
                         {/* Professional Info Column */}
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                             <h3 className="font-semibold text-lg border-b border-base-content/10 pb-2">Professional Profile</h3>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Bio</span></label>
-                                <textarea value={bio} className="textarea textarea-bordered textarea-primary h-24 bg-base-200/50" placeholder="Tell us about yourself..." onChange={(e) => setBio(e.target.value)}></textarea>
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Bio</span></label>
+                                <textarea value={bio} className="textarea textarea-bordered textarea-primary h-24 bg-base-200/50 focus:bg-base-200 transition-colors" placeholder="Tell us about yourself..." onChange={(e) => setBio(e.target.value)}></textarea>
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Skills</span></label>
-                                <input value={skills} type="text" className="input input-bordered input-primary bg-base-200/50" placeholder="React, Node.js, Python..." onChange={(e) => setSkills(e.target.value)} />
-                                <label className="label"><span className="label-text-alt opacity-60">Comma separated skills</span></label>
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Skills</span></label>
+                                <input value={skills} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" placeholder="React, Node.js, Python..." onChange={(e) => setSkills(e.target.value)} />
+                                <label className="label p-0"><span className="label-text-alt opacity-60">Comma separated skills</span></label>
                             </div>
 
-                            <div className="form-control w-full">
-                                <label className="label"><span className="label-text font-medium">Profile Photo</span></label>
-                                <input type="file" className="file-input file-input-bordered file-input-primary w-full bg-base-200/50" onChange={(e) => setPhoto(e.target.files[0])} />
+                            <div className="form-control w-full gap-2">
+                                <label className="label p-0"><span className="label-text font-medium">Profile Photo</span></label>
+                                <input type="file" className="file-input file-input-bordered file-input-primary w-full bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setPhoto(e.target.files[0])} />
                             </div>
                         </div>
                     </div>
