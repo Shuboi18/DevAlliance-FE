@@ -4,7 +4,7 @@ import { removeUserInfo } from "../assets/UserSlice";
 import axios from "axios";
 import { LogOut, User, Users, Bell, Code2, Moon, Sun, Menu, X, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import { BASE_URL } from "../utils/config";
+import { BASE_URL, getProfileImageUrl } from "../utils/config";
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -71,7 +71,7 @@ const NavBar = () => {
                                         <div className="w-10 rounded-full">
                                             <img
                                                 alt="User Avatar"
-                                                src={user.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                                                src={getProfileImageUrl(user.photoURL)}
                                                 onError={(e) => { e.target.src = "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" }}
                                             />
                                         </div>

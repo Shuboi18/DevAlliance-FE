@@ -3,7 +3,7 @@ import { removeFeedInfo } from "../assets/FeedSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
-import { BASE_URL } from "../utils/config";
+import { BASE_URL, getProfileImageUrl } from "../utils/config";
 
 const UserFeedCard = ({ feedStore }) => {
     const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const UserFeedCard = ({ feedStore }) => {
             <div className="card w-96 bg-base-100 shadow-xl border border-base-200">
                 <figure className="relative h-64 w-full overflow-hidden">
                     <img
-                        src={photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                        src={getProfileImageUrl(photoURL)}
                         alt="Profile"
                         className="w-full h-full object-cover"
                     />

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { addConnections } from "../assets/ConnectionSlice";
 import { Briefcase, MapPin, MessageCircle, UserCheck } from "lucide-react";
 import toast from "react-hot-toast";
-import { BASE_URL } from "../utils/config";
+import { BASE_URL, getProfileImageUrl } from "../utils/config";
 
 const MyConnections = () => {
     const dispatch = useDispatch();
@@ -73,7 +73,7 @@ const MyConnections = () => {
                                 <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-br from-primary/20 to-secondary/20 z-0"></div>
                                 <div className="avatar z-10">
                                     <div className="w-24 rounded-full ring-4 ring-base-100 shadow-lg">
-                                        <img src={photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} alt={`${fname} ${lname}`} />
+                                        <img src={getProfileImageUrl(photoURL)} alt={`${fname} ${lname}`} />
                                     </div>
                                 </div>
                             </figure>

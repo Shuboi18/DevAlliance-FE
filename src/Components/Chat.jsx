@@ -6,7 +6,7 @@ import { Send, MessageCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import { useSocket } from "../Context/SocketContext";
 
-import { BASE_URL } from "../utils/config";
+import { BASE_URL, getProfileImageUrl } from "../utils/config";
 
 const Chat = () => {
     const user = useSelector((store) => store.user);
@@ -132,10 +132,7 @@ const Chat = () => {
                             <div className="avatar online">
                                 <div className="w-12 rounded-full">
                                     <img
-                                        src={
-                                            conn.photoURL ||
-                                            "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                        }
+                                        src={getProfileImageUrl(conn.photoURL)}
                                         alt={conn.fname}
                                     />
                                 </div>
@@ -166,10 +163,7 @@ const Chat = () => {
                                 <div className="avatar">
                                     <div className="w-10 rounded-full">
                                         <img
-                                            src={
-                                                selectedUser.photoURL ||
-                                                "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                            }
+                                            src={getProfileImageUrl(selectedUser.photoURL)}
                                             alt={selectedUser.fname}
                                         />
                                     </div>
@@ -200,8 +194,8 @@ const Chat = () => {
                                                 <img
                                                     src={
                                                         isMe
-                                                            ? user.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                                            : selectedUser.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                                            ? getProfileImageUrl(user.photoURL)
+                                                            : getProfileImageUrl(selectedUser.photoURL)
                                                     }
                                                     alt="avatar"
                                                 />

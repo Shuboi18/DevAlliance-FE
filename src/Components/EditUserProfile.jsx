@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { BASE_URL } from "../utils/config";
+import { BASE_URL, getProfileImageUrl } from "../utils/config";
 
 const EditUserProfile = ({ user }) => {
     const [fname, seteditFname] = useState(user.fname);
@@ -9,7 +9,7 @@ const EditUserProfile = ({ user }) => {
     const [bio, seteditBio] = useState(user.bio);
     const [skills, seteditSkills] = useState(user.skills);
     const [photo, setPhoto] = useState(null);
-    const [previewPhoto, setPreviewPhoto] = useState(user.photoURL);
+    const [previewPhoto, setPreviewPhoto] = useState(getProfileImageUrl(user.photoURL));
     const [gender, seteditGender] = useState(user.gender);
     const [developerType, setDeveloperType] = useState(user.developerType || "Developer");
     const [saving, setSaving] = useState(false);
