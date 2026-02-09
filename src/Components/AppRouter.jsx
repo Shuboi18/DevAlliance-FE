@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import App from "../App.jsx";
 import Login from "./Login";
@@ -25,7 +25,7 @@ const Loading = () => (
     </div>
 );
 
-const router = createBrowserRouter([{
+const router = createHashRouter([{
     path: "/",
     element: <App />,
     children: [
