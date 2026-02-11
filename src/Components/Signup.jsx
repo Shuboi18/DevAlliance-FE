@@ -24,14 +24,41 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
+    const validateForm = () => {
+        if (!fname || !lname || !email || !password || !age || !gender || !developerType || !skills) {
+            setError("All fields are required.");
+            return false;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setError("Please enter a valid email address.");
+            return false;
+        }
+        if (password.length < 8) {
+            setError("Password must be at least 8 characters long.");
+            return false;
+        }
+        if (age < 18) {
+            setError("You must be at least 18 years old to join.");
+            return false;
+        }
+        if (bio.trim().split(/\s+/).length > 150) {
+            setError("Bio must be 150 words or less.");
+            return false;
+        }
+        return true;
+    }
+
     const handleSignup = async () => {
-        setLoading(true);
         setError("");
+        if (!validateForm()) return;
+
+        setLoading(true);
 
         const formData = new FormData();
         formData.append("fname", fname);
         formData.append("lname", lname);
-        formData.append("email", email);
+        formData.append("email", email.trim());
         formData.append("password", password);
         formData.append("age", age);
         formData.append("gender", gender);
@@ -87,22 +114,22 @@ const Signup = () => {
 
                             <div className="flex gap-4">
                                 <div className="form-control w-full gap-2">
-                                    <label className="label p-0"><span className="label-text font-medium">First Name</span></label>
+                                    <label className="label p-0 mb-2"><span className="label-text font-medium">First Name</span></label>
                                     <input value={fname} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setFname(e.target.value)} />
                                 </div>
                                 <div className="form-control w-full gap-2">
-                                    <label className="label p-0"><span className="label-text font-medium">Last Name</span></label>
+                                    <label className="label p-0 mb-2"><span className="label-text font-medium">Last Name</span></label>
                                     <input value={lname} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setLname(e.target.value)} />
                                 </div>
                             </div>
 
-                            <div className="form-control w-full gap-2">
-                                <label className="label p-0"><span className="label-text font-medium">Email</span></label>
+                            <div className="form-control w-full gap-2 mt-2">
+                                <label className="label p-0 mr-4"><span className="label-text font-medium">Email</span></label>
                                 <input value={email} type="email" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setEmail(e.target.value)} />
                             </div>
 
-                            <div className="form-control w-full gap-2">
-                                <label className="label p-0"><span className="label-text font-medium">Password</span></label>
+                            <div className="form-control w-full gap-2 mt-2">
+                                <label className="label p-0 mb-2"><span className="label-text font-medium">Password</span></label>
                                 <div className="relative">
                                     <input
                                         value={password}
@@ -122,11 +149,11 @@ const Signup = () => {
 
                             <div className="flex gap-4">
                                 <div className="form-control w-1/3 gap-2">
-                                    <label className="label p-0"><span className="label-text font-medium">Age</span></label>
+                                    <label className="label p-0 mb-2"><span className="label-text font-medium">Age</span></label>
                                     <input value={age} type="number" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setAge(e.target.value)} />
                                 </div>
                                 <div className="form-control w-2/3 gap-2">
-                                    <label className="label p-0"><span className="label-text font-medium">Gender</span></label>
+                                    <label className="label p-0 mb-2"><span className="label-text font-medium">Gender</span></label>
                                     <select className="select select-bordered select-primary bg-base-200/50 w-full focus:bg-base-200 transition-colors" onChange={(e) => setGender(e.target.value)}>
                                         <option disabled selected>Select Gender</option>
                                         <option value="Male">Male</option>
@@ -137,7 +164,7 @@ const Signup = () => {
                             </div>
 
                             <div className="form-control w-full gap-2">
-                                <label className="label p-0"><span className="label-text font-medium">Developer Type</span></label>
+                                <label className="label p-0 mb-2"><span className="label-text font-medium">Developer Type</span></label>
                                 <select className="select select-bordered select-primary bg-base-200/50 w-full focus:bg-base-200 transition-colors" onChange={(e) => setDeveloperType(e.target.value)}>
                                     <option disabled selected>Select Developer Type</option>
                                     <option value="Frontend Developer">Frontend Developer</option>
@@ -152,22 +179,22 @@ const Signup = () => {
                         </div>
 
                         {/* Professional Info Column */}
-                        <div className="space-y-5">
+                        <div className="space-y-5 ml-4">
                             <h3 className="font-semibold text-lg border-b border-base-content/10 pb-2">Professional Profile</h3>
 
-                            <div className="form-control w-full gap-2">
-                                <label className="label p-0"><span className="label-text font-medium">Bio</span></label>
+                            <div className="form-control w-full gap-2 ml-4">
+                                <label className="label p-0 mr-4"><span className="label-text font-medium">Bio</span></label>
                                 <textarea value={bio} className="textarea textarea-bordered textarea-primary h-24 bg-base-200/50 focus:bg-base-200 transition-colors" placeholder="Tell us about yourself..." onChange={(e) => setBio(e.target.value)}></textarea>
                             </div>
 
-                            <div className="form-control w-full gap-2">
-                                <label className="label p-0"><span className="label-text font-medium">Skills</span></label>
+                            <div className="form-control w-full gap-2 ml-4">
+                                <label className="label p-0 mr-4"><span className="label-text font-medium">Skills</span></label>
                                 <input value={skills} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-200 transition-colors" placeholder="React, Node.js, Python..." onChange={(e) => setSkills(e.target.value)} />
-                                <label className="label p-0"><span className="label-text-alt opacity-60">Comma separated skills</span></label>
+                                <label className="label p-0"><span className="label-text-alt opacity-60">(Note: Must be comma separated)</span></label>
                             </div>
 
-                            <div className="form-control w-full gap-2">
-                                <label className="label p-0"><span className="label-text font-medium">Profile Photo</span></label>
+                            <div className="form-control w-full gap-2 ml-4">
+                                <label className="label p-0 mb-2"><span className="label-text font-medium">Profile Photo</span></label>
                                 <input type="file" className="file-input file-input-bordered file-input-primary w-full bg-base-200/50 focus:bg-base-200 transition-colors" onChange={(e) => setPhoto(e.target.files[0])} />
                             </div>
                         </div>

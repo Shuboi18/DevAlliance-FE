@@ -23,6 +23,16 @@ const EditUserProfile = ({ user }) => {
     };
 
     const editProfileButton = async () => {
+        if (!fname || !lname || !bio || !skills) {
+            toast.error("Please fill in all required fields.");
+            return;
+        }
+
+        if (bio.trim().split(/\s+/).length > 150) {
+            toast.error("Bio must be 150 words or less.");
+            return;
+        }
+
         setSaving(true);
         const formData = new FormData();
         formData.append("fname", fname);
@@ -74,17 +84,17 @@ const EditUserProfile = ({ user }) => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="form-control">
-                                <label className="label"><span className="label-text font-semibold">First Name</span></label>
+                                <label className="label mb-2"><span className="label-text font-semibold">First Name</span></label>
                                 <input value={fname} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-100 transition-all font-medium" onChange={(e) => seteditFname(e.target.value)} />
                             </div>
                             <div className="form-control">
-                                <label className="label"><span className="label-text font-semibold">Last Name</span></label>
+                                <label className="label mb-2"><span className="label-text font-semibold">Last Name</span></label>
                                 <input value={lname} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-100 transition-all font-medium" onChange={(e) => seteditLname(e.target.value)} />
                             </div>
                         </div>
 
                         <div className="form-control mt-4">
-                            <label className="label"><span className="label-text font-semibold">Gender</span></label>
+                            <label className="label mr-4"><span className="label-text font-semibold">Gender</span></label>
                             <select value={gender} className="select select-bordered select-primary bg-base-200/50 focus:bg-base-100 transition-all font-medium" onChange={(e) => seteditGender(e.target.value)}>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -93,7 +103,7 @@ const EditUserProfile = ({ user }) => {
                         </div>
 
                         <div className="form-control mt-4">
-                            <label className="label"><span className="label-text font-semibold">Developer Type</span></label>
+                            <label className="label mr-4"><span className="label-text font-semibold">Developer Type</span></label>
                             <select value={developerType} className="select select-bordered select-primary bg-base-200/50 focus:bg-base-100 transition-all font-medium" onChange={(e) => setDeveloperType(e.target.value)}>
                                 <option value="Frontend Developer">Frontend Developer</option>
                                 <option value="Backend Developer">Backend Developer</option>
@@ -108,16 +118,16 @@ const EditUserProfile = ({ user }) => {
                         <div className="form-control mt-4">
                             <label className="label"><span className="label-text font-semibold">Bio</span></label>
                             <textarea value={bio} className="textarea textarea-bordered textarea-primary h-32 bg-base-200/50 focus:bg-base-100 transition-all font-medium resize-none leading-relaxed" placeholder="Tell us about yourself..." onChange={(e) => seteditBio(e.target.value)}></textarea>
-                            <label className="label"><span className="label-text-alt text-base-content/50">{bio?.length || 0}/200 characters</span></label>
+                            <label className="label"><span className="label-text-alt text-base-content/50">{bio?.trim().split(/\s+/).filter(w => w.length > 0).length || 0}/150 words</span></label>
                         </div>
 
                         <div className="form-control mt-2">
-                            <label className="label"><span className="label-text font-semibold">Skills (comma separated)</span></label>
+                            <label className="label mb-2"><span className="label-text font-semibold">Skills (comma separated)</span></label>
                             <input value={skills} type="text" className="input input-bordered input-primary bg-base-200/50 focus:bg-base-100 transition-all font-medium" placeholder="React, Node.js, Python..." onChange={(e) => seteditSkills(e.target.value)} />
                         </div>
 
                         <div className="form-control mt-4">
-                            <label className="label"><span className="label-text font-semibold">Profile Photo</span></label>
+                            <label className="label mb-2"><span className="label-text font-semibold">Profile Photo</span></label>
                             <input type="file" className="file-input file-input-bordered file-input-primary w-full bg-base-200/50" onChange={handlePhotoChange} />
                         </div>
 
